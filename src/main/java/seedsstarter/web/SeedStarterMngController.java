@@ -1,5 +1,6 @@
 package seedsstarter.web;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import seedsstarter.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import seedsstarter.service.SeedStarterService;
 import seedsstarter.service.VarietyService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -44,6 +46,13 @@ public class SeedStarterMngController {
         return this.seedStarterService.findAll();
     }
 
+
+    @ModelAttribute
+    public Variety parse(@RequestParam(required = false) final String text) throws ParseException {
+        if (text == null) return new Variety();
+        final Integer varietyId = Integer.valueOf(text);
+        return this.varietyService.findById(varietyId);
+    }
 
     @RequestMapping({"/","/seedstartermng"})
     public String showSeedstarters(final SeedStarter seedStarter) {
