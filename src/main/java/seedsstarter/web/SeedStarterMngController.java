@@ -1,9 +1,6 @@
 package seedsstarter.web;
 
-import seedsstarter.model.Feature;
-import seedsstarter.model.SeedStarter;
-import seedsstarter.model.Variety;
-import seedsstarter.model.Type;
+import seedsstarter.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import seedsstarter.service.SeedStarterService;
 import seedsstarter.service.VarietyService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -62,6 +60,21 @@ public class SeedStarterMngController {
         this.seedStarterService.add(seedStarter);
         model.clear();
         return "redirect:/seedstartermng";
+    }
+
+    @RequestMapping(value="/seedstartermng", params={"addRow"})
+    public String addRow(final SeedStarter seedStarter, final BindingResult bindingResult) {
+        seedStarter.getRows().add(new Row());
+        return "seedstartermng";
+    }
+
+    @RequestMapping(value="/seedstartermng", params={"removeRow"})
+    public String removeRow(
+            final SeedStarter seedStarter, final BindingResult bindingResult,
+            final HttpServletRequest req) {
+        final Integer rowId = Integer.valueOf(req.getParameter("removeRow"));
+        seedStarter.getRows().remove(rowId.intValue());
+        return "seedstartermng";
     }
 
 }
