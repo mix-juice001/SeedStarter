@@ -1,61 +1,60 @@
 package seedsstarter.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 public class SeedStarter {
-    Integer id;
-    Date datePlanted;
-    Boolean covered;
-    Type type;
-    Feature[] features;
-    List<Row> rows;
 
-    public Integer getId() {
-        return id;
+    private Integer id = null;
+    private Date datePlanted = null;
+    private Boolean covered = null;
+    private Type type = Type.PLASTIC;
+    private Feature[] features = null;
+    private List<Row> rows = new ArrayList<Row>();
+    public SeedStarter() {
+        super();
     }
-
-    public void setId(Integer id) {
+    public Integer getId() {
+        return this.id;
+    }
+    public void setId(final Integer id) {
         this.id = id;
     }
-
     public Date getDatePlanted() {
-        return datePlanted;
+        return this.datePlanted;
     }
-
-    public void setDatePlanted(Date datePlanted) {
+    public void setDatePlanted(final Date datePlanted) {
         this.datePlanted = datePlanted;
     }
-
     public Boolean getCovered() {
-        return covered;
+        return this.covered;
     }
-
-    public void setCovered(Boolean covered) {
+    public void setCovered(final Boolean covered) {
         this.covered = covered;
     }
-
     public Type getType() {
-        return type;
+        return this.type;
     }
-
-    public void setType(Type type) {
+    public void setType(final Type type) {
         this.type = type;
     }
-
     public Feature[] getFeatures() {
-        return features;
+        return this.features;
     }
-
-    public void setFeatures(Feature[] features) {
+    public void setFeatures(final Feature[] features) {
         this.features = features;
     }
-
     public List<Row> getRows() {
-        return rows;
+        return this.rows;
+    }
+    @Override
+    public String toString() {
+        return "SeedStarter [id=" + this.id + ", datePlanted=" + this.datePlanted
+                + ", covered=" + this.covered + ", type=" + this.type + ", features="
+                + Arrays.toString(this.features) + ", rows=" + this.rows + "]";
     }
 
-    public void setRows(List<Row> rows) {
-        this.rows = rows;
-    }
+
 }

@@ -1,22 +1,34 @@
 package seedsstarter.model;
 
 public class Row {
-    Variety variety;
-    Integer seedsPerCell;
 
-    public Variety getVariety() {
-        return variety;
+    private Variety variety = null;
+    private Integer seedsPerCell = null;
+
+    public Row() {
+        super();
     }
 
-    public void setVariety(Variety variety) {
+    public Variety getVariety() {
+        return this.variety;
+    }
+
+    public void setVariety(final Variety variety) {
         this.variety = variety;
     }
 
     public Integer getSeedsPerCell() {
-        return seedsPerCell;
+        return this.seedsPerCell;
     }
 
-    public void setSeedsPerCell(Integer seedsPerCell) {
+    public void setSeedsPerCell(final Integer seedsPerCell) {
         this.seedsPerCell = seedsPerCell;
     }
+
+    @Override
+    public String toString() {
+        return "Row [variety=" + this.variety + ", seedsPerCell=" + this.seedsPerCell + "]";
+    }
+
 }
+
