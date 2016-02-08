@@ -9,33 +9,48 @@ import java.util.List;
 
 @Repository
 public class SeedsStarterDataSource implements SeedStarterRepository {
+
+
+    private final List<SeedStarter> seedStarters = new ArrayList<SeedStarter>();
+
     @Override
     public List<SeedStarter> findAll() {
-        SeedStarter seedStarter1 = new SeedStarter();
-        seedStarter1.setId(1);
-        seedStarter1.setType(Type.PLASTIC);
-        seedStarter1.setCovered(true);
-        seedStarter1.setDatePlanted(new Date());
-        seedStarter1.setFeatures(Feature.ALL);
-        Row row1 = new Row();
-        row1.setSeedsPerCell(300);
-        Variety variety = new Variety();
-        variety.setId(101);
-        variety.setName("ポインセチア");
-        row1.setVariety(variety);
-        List<Row> rows = new ArrayList<Row>();
-        rows.add(row1);
-        seedStarter1.setRows(rows);
-
-//        SeedStarter seedStarter2 = new SeedStarter();
-
-        List<SeedStarter> seedStarters = new ArrayList<SeedStarter>();
-        seedStarters.add(seedStarter1);
-        return seedStarters;
+        return new ArrayList<SeedStarter>(this.seedStarters);
     }
 
     @Override
-    public void add(SeedStarter seedStarter) {
-
+    public void add(final SeedStarter seedStarter) {
+        this.seedStarters.add(seedStarter);
     }
+
+
+//    @Override
+//    public List<SeedStarter> findAll() {
+//        SeedStarter seedStarter1 = new SeedStarter();
+//        seedStarter1.setId(1);
+//        seedStarter1.setType(Type.PLASTIC);
+//        seedStarter1.setCovered(true);
+//        seedStarter1.setDatePlanted(new Date());
+//        seedStarter1.setFeatures(Feature.ALL);
+//        Row row1 = new Row();
+//        row1.setSeedsPerCell(300);
+//        Variety variety = new Variety();
+//        variety.setId(101);
+//        variety.setName("ポインセチア");
+//        row1.setVariety(variety);
+//        List<Row> rows = new ArrayList<Row>();
+//        rows.add(row1);
+//        seedStarter1.setRows(rows);
+//
+////        SeedStarter seedStarter2 = new SeedStarter();
+//
+//        List<SeedStarter> seedStarters = new ArrayList<SeedStarter>();
+//        seedStarters.add(seedStarter1);
+//        return seedStarters;
+//    }
+//
+//    @Override
+//    public void add(SeedStarter seedStarter) {
+//
+//    }
 }
