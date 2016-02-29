@@ -13,3 +13,6 @@ https://github.com/thymeleaf/thymeleafexamples-stsm
  To learn more and download latest version:
  
      http://www.thymeleaf.org
+
+### tutorial
+http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html
